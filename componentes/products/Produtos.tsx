@@ -7,12 +7,13 @@ const Produtos = () => {
   const [produtosList, setProdutosList] = useState<Products[]>([]);
   useEffect(() => {
     ProdutosList();
-  });
+  }, []);
   const ProdutosList = async () => {
     const res = await axios.get(
       "https://api.escuelajs.co/api/v1/products?offset=10&limit=10"
     );
     const data = await res.data;
+    console.log(data);
     setProdutosList(data);
   };
 
@@ -22,6 +23,12 @@ const Produtos = () => {
         {produtosList.map((item) => {
           return (
             <li key={item.id}>
+              <Image
+                src={item?.images?.length > 0 ? item.images[0] : ""}
+                alt={item.title}
+                width={120}
+                height={120}
+              />
               <h2>{item.title}</h2>
               <p>{item.description}</p>
               <span>{item.price}</span>
