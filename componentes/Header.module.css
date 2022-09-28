@@ -1,0 +1,43 @@
+.header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #dfd1d0;
+}
+
+.header .mainContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .mainContainer .navigator {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .mainContainer nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header .mainContainer nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 18px;
+  gap: 10px;
+}
+
+.header li {
+  font-size: 1.1rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.header .mainContainer .login ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+}

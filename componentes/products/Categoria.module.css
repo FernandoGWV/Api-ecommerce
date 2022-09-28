@@ -1,0 +1,25 @@
+.mainContainer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.mainContainer ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mainContainer ul li figure img {
+  border-radius: 10px;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.mainContainer ul li figure img:hover {
+  opacity: 0.8;
+}
+
+.mainContainer ul li {
+  flex-grow: 1;
+  text-align: center;
+}
