@@ -29,26 +29,36 @@ const Categoria = () => {
       setloading(false);
     }
   };
+  const ArrayNames: string[] = [
+    "Clothess",
+    "Electronics",
+    "Furniture",
+    "Shoes",
+    "Others",
+  ];
 
   return (
     <div className={`${styles.mainContainer}`}>
       {loading && <div>Carregando...</div>}
       <ul>
-        {produtosList.map((item) => (
-          <Link href={`/categoria/${item.id}/products`} key={item.id}>
-            <li>
-              <figure>
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  width={180}
-                  height={130}
-                />
-              </figure>
-              {item.name}{" "}
-            </li>
-          </Link>
-        ))}
+        {produtosList.map((item) => {
+          if (item.image.includes("https://api.lorem.space/image"))
+            return (
+              <li key={item.id}>
+                <figure>
+                  <Link href={`/categoria/${item.id}/products`}>
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      width={180}
+                      height={130}
+                    />
+                  </Link>
+                </figure>
+                {ArrayNames.includes(item.name) ? item.name : " "}{" "}
+              </li>
+            );
+        })}
       </ul>
     </div>
   );
