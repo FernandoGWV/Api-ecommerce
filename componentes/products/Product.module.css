@@ -4,7 +4,7 @@
   gap: 50px;
   justify-content: space-around;
   align-items: center;
-  margin: 0;
+  margin-top: 50px;
   padding: 0;
 }
 
@@ -14,6 +14,14 @@
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 0 10px #000;
+  cursor: pointer;
+  transform: translateY(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.listProduct ul li:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 10px #04bf8a;
 }
 
 /* .listProduct ul li:after {
