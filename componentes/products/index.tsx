@@ -30,7 +30,7 @@ const Categoria = () => {
     }
   };
   const ArrayNames: string[] = [
-    "Clothess",
+    "Clothes",
     "Electronics",
     "Furniture",
     "Shoes",

@@ -27,9 +27,11 @@ const Header = () => {
 
         <div className={styles.login}>
           <ul>
-            <li>
-              <Image src={UserPng} alt="userIcon" />
-            </li>
+            <Link href="/login">
+              <li className={styles.iconLogin}>
+                <Image src={UserPng} alt="userIcon" />
+              </li>
+            </Link>
             <li>
               <Image src={CartIcon} alt="userIcon" />
             </li>

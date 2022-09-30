@@ -6,7 +6,6 @@
 .mainContainer ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
 }
 
 .mainContainer ul li figure img {
