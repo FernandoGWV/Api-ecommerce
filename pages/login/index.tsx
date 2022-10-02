@@ -1,11 +1,13 @@
 import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { TOKEN_POST } from "../../Contexts/api";
 import { useAuthContext } from "../../Contexts/UserContext";
 import styles from "../../styles/Login.module.css";
 
 const Login = () => {
+  const router = useRouter();
   const [username, setUrsername] = useState("");
   const [password, setPassword] = useState("");
   const authContext = useAuthContext();
@@ -17,7 +19,7 @@ const Login = () => {
     event.preventDefault();
     await authContext.logar(username, password);
   };
-
+  if (authContext.isLoged) router.push("/");
   return (
     <section className={styles.mainContainer}>
       <div className={styles.login}>

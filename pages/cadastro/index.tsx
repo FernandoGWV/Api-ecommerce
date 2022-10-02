@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import styles from "../../styles/Cadastro.module.css";
 import { useAuthContext } from "../../Contexts/UserContext";
+import { useRouter } from "next/router";
 
 const CadastroPage = () => {
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -16,7 +18,7 @@ const CadastroPage = () => {
     event.preventDefault();
     authContext.cadastro(username, password, email, avatar);
   };
-
+  if (authContext.isLoged) router.push("/");
   return (
     <section className={styles.mainContainer}>
       <div className={styles.cadastro}>

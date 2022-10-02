@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import api from "../services/api";
+import { truncate } from "fs";
 
 type IUser = {
   id: number;
@@ -48,6 +49,7 @@ const AuthContext = ({ children }: any) => {
       .then((dados) => {
         localStorage.setItem("@token", dados.data.access_token);
         fetchData();
+        setIsLoged(true);
         router.push("/");
       })
       .catch((err) => {
@@ -58,6 +60,8 @@ const AuthContext = ({ children }: any) => {
   const deslogar = () => {
     if (localStorage.getItem("@token")) {
       localStorage.setItem("@token", "");
+      setIsLoged(false);
+      setDadosUsuario(null);
     }
   };
 

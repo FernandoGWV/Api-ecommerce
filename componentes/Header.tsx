@@ -39,10 +39,8 @@ const Header = () => {
                   <Image src={UserPng} alt="userIcon" />
                 </figure>
                 <p>{authContext.dadosUsuario?.name}</p>
-                {authContext.isLoged ? (
+                {authContext.isLoged && (
                   <button onClick={Deslogamento}>SAIR</button>
-                ) : (
-                  ""
                 )}
               </li>
             </Link>
