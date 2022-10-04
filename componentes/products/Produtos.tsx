@@ -3,6 +3,7 @@ import axios from "axios";
 import { Products } from "../../types/products";
 import Image from "next/image";
 import styles from "./Product.module.css";
+import Link from "next/link";
 
 const Produtos = () => {
   const [produtosList, setProdutosList] = useState<Products[]>([]);
@@ -23,21 +24,23 @@ const Produtos = () => {
       <ul>
         {produtosList.map((item) => {
           return (
-            <li key={item.id}>
-              <figure>
-                <Image
-                  src={item.images[0]}
-                  alt={item.title}
-                  width={1040}
-                  height={940}
-                />
-              </figure>
-              <div>
-                <h2>{item.title}</h2>
-                <p>{item.description}</p>
-                <span>${item.price}</span>
-              </div>
-            </li>
+            <Link href={`/products/${item.id}`} key={item.id}>
+              <li>
+                <figure>
+                  <Image
+                    src={item.images[0]}
+                    alt={item.title}
+                    width={1040}
+                    height={940}
+                  />
+                </figure>
+                <div>
+                  <h2>{item.title}</h2>
+                  <p>{item.description}</p>
+                  <span>${item.price}</span>
+                </div>
+              </li>
+            </Link>
           );
         })}
       </ul>
