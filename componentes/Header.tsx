@@ -4,8 +4,14 @@ import Image from "next/image";
 import UserPng from "../Assets/user/user.svg";
 import CartIcon from "../Assets/user/cart.svg";
 import Link from "next/link";
+import { useAuthContext } from "../Contexts/UserContext";
 
 const Header = () => {
+  const authContext = useAuthContext();
+
+  const Deslogamento = () => {
+    authContext.deslogar();
+  };
   return (
     <header className={styles.header}>
       <div className={`${styles.mainContainer} container`}>
@@ -27,9 +33,15 @@ const Header = () => {
 
         <div className={styles.login}>
           <ul>
-            <Link href="/login">
+            <Link href={authContext.isLoged ? "/" : "/login"}>
               <li className={styles.iconLogin}>
-                <Image src={UserPng} alt="userIcon" />
+                <figure>
+                  <Image src={UserPng} alt="userIcon" />
+                </figure>
+                <p>{authContext.dadosUsuario?.name}</p>
+                {authContext.isLoged && (
+                  <button onClick={Deslogamento}>SAIR</button>
+                )}
               </li>
             </Link>
             <li>

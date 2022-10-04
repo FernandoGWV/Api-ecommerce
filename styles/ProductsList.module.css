@@ -1,0 +1,11 @@
+.mainContainer ul {
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  justify-content: space-around;
+  gap: 20px;
+  align-items: center;
+}
+
+.mainContainer ul li {
+  cursor: pointer;
+}

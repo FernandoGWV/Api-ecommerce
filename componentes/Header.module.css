@@ -43,4 +43,9 @@
 
 .header .mainContainer .login ul .iconLogin {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  gap: 10px;
 }
