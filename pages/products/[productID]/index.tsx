@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import axios from "axios";
 import { Products } from "../../../types/products";
-import Image from "next/image";
+import Button from "../../../componentes/Button";
+import styles from "../../../styles/Product.module.css";
 
 const ProductSingle = () => {
   const router = useRouter();
@@ -22,19 +24,29 @@ const ProductSingle = () => {
   };
 
   return (
-    <section>
+    <section className={styles.mainContainer}>
       <figure>
         <Image
+          className={styles.img}
           src={single?.images[0] || ""}
           alt={single?.title}
           width={400}
           height={400}
         />
       </figure>
+
       <div>
         <h1>{single?.title}</h1>
         <p>{single?.description}</p>
         <span>${single?.price}</span>
+
+        <Button
+          id={single?.id}
+          titulo={single?.title}
+          price={single?.price}
+          img={single?.images[0]}
+          name="comprar "
+        />
       </div>
     </section>
   );
