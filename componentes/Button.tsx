@@ -5,10 +5,10 @@ import styles from "./Button.module.css";
 
 type Props = {
   name: string;
-  titulo: string | undefined;
-  price: number | undefined;
-  img: string | undefined;
-  id: number | undefined;
+  titulo: string;
+  price: string;
+  img: string;
+  id: string;
 };
 
 const Button = ({ name, titulo, price, img, id }: Props) => {
@@ -19,7 +19,7 @@ const Button = ({ name, titulo, price, img, id }: Props) => {
   };
 
   return (
-    <button title={titulo} className={styles.btn} onClick={handleCart}>
+    <button className={styles.btn} onClick={handleCart}>
       {name}
     </button>
   );

@@ -41,10 +41,10 @@ const ProductSingle = () => {
         <span>${single?.price}</span>
 
         <Button
-          id={single?.id}
-          titulo={single?.title}
-          price={single?.price}
-          img={single?.images[0]}
+          id={single?.id ? single?.id.toString() : ""}
+          titulo={single?.title ? single?.title : ""}
+          price={single?.price ? single?.price.toString() : ""}
+          img={single?.images[0] ? single?.images[0] : ""}
           name="comprar "
         />
       </div>

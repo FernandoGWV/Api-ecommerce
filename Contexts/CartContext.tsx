@@ -1,37 +1,65 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect } from "react";
 
-interface Cart {
-  CartItem({ titulo, price, img, id }: any): string;
-  CartGet(id: string | number): void;
-}
-const cartProvider = createContext({} as Cart);
+type PropCart = {
+  titulo: string;
+  price: string;
+  img: string;
+  id: string;
+};
+
+type Props = {
+  cart: [];
+  CartItem: ({ titulo, price, img, id }: PropCart) => void;
+  ClearCart: ({ titulo, price, img, id }: PropCart) => void;
+};
+
+const cartProvider = createContext({
+  cart: [],
+  CartItem: () => {},
+  ClearCart: () => {},
+} as Props);
 
 const CartContext = ({ children }: any) => {
-  type PropCart = {
-    titulo: string;
-    price: string;
-    img: string;
-    id: string;
-  };
+  const [cart, setCart] = React.useState<any>([]);
 
-  const CartGet = (id: string | number) => {
-    if (localStorage.getItem(`@Cart id=${id}`)) {
-      return localStorage.getItem(`@Cart id=${id}`);
-    } else return null;
-  };
+  useEffect(() => {
+    if (cart && localStorage) {
+      localStorage.setItem("@Cart", JSON.stringify(cart));
+    }
+  }, [cart]);
 
-  const CartItem = ({ titulo, price, img, id }: PropCart): any => {
-    const itens: any = {
+  useEffect(() => {
+    if (localStorage) {
+      setCart(JSON.parse(localStorage.getItem("@Cart") || "[]"));
+    }
+  }, []);
+
+  const CartItem = ({ titulo, price, img, id }: PropCart) => {
+    const itens = {
       id,
       titulo,
       price,
       img,
     };
-    localStorage.setItem(`@Cart id=${id}`, JSON.stringify(itens));
+    const NewCart = cart.filter((item: any) => item.id !== id);
+    NewCart.push(itens);
+    setCart(NewCart);
+  };
+
+  const ClearCart = ({ titulo, price, img, id }: PropCart): any => {
+    const itens = {
+      id,
+      titulo,
+      price,
+      img,
+    };
+    const NewCart = cart.filter((item: any) => item.id !== id);
+    NewCart.pop(itens);
+    setCart(NewCart);
   };
 
   return (
-    <cartProvider.Provider value={{ CartItem, CartGet }}>
+    <cartProvider.Provider value={{ CartItem, cart, ClearCart }}>
       {children}
     </cartProvider.Provider>
   );
