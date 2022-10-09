@@ -8,7 +8,7 @@ type PropCart = {
 };
 
 type Props = {
-  cart: [];
+  cart: PropCart[];
   CartItem: ({ titulo, price, img, id }: PropCart) => void;
   ClearCart: ({ titulo, price, img, id }: PropCart) => void;
 };
