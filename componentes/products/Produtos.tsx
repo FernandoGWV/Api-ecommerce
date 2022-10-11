@@ -15,6 +15,7 @@ const Produtos = () => {
   const ProdutosList = async () => {
     try {
       setLoading(true);
+
       const res = await axios.get(
         "https://api.escuelajs.co/api/v1/products?offset=10&limit=9"
       );

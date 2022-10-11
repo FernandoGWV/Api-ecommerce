@@ -20,12 +20,9 @@ const cartProvider = createContext({
 } as Props);
 
 const CartContext = ({ children }: any) => {
-  const [cart, setCart] = React.useState<any>([]);
-
+  const [cart, setCart] = React.useState<any>();
   useEffect(() => {
-    if (cart && localStorage) {
-      localStorage.setItem("@Cart", JSON.stringify(cart));
-    }
+    localStorage.setItem("@Cart", JSON.stringify(cart));
   }, [cart]);
 
   useEffect(() => {

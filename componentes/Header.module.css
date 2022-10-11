@@ -50,6 +50,10 @@
   gap: 10px;
 }
 
+.header .mainContainer .login .iconCart {
+  cursor: pointer;
+}
+
 .mainContainer .products {
   position: absolute;
   background: #fefefe;
@@ -60,15 +64,41 @@
   z-index: 2;
   width: 600px;
   height: 400px;
+  overflow-x: auto;
 }
 
 .mainContainer .products ul li {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   gap: 10px;
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  width: 550px;
+}
+
+.mainContainer .products ul li h2 {
+  font-size: 1.2rem;
+}
+.mainContainer .products ul li img {
+  border-radius: 10px;
 }
 
 .mainContainer .products ul .btn {
-  margin-left: 50px;
+  margin-left: 60px;
+  position: relative;
+  right: 0;
+}
+
+.mainContainer .products ul .btn button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mainContainer .products .title {
+  margin: 30%;
 }

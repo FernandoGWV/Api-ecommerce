@@ -17,7 +17,7 @@ const ProductSingle = () => {
 
   const InitProduct = async () => {
     const res = await axios.get(
-      `https://api.escuelajs.co/api/v1/products/${productID}`
+      `https://api.escuelajs.co/api/v1/products/${productID}/`
     );
     const data = res.data;
     setProductSingle(data);
