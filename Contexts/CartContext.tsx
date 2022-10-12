@@ -20,7 +20,7 @@ const cartProvider = createContext({
 } as Props);
 
 const CartContext = ({ children }: any) => {
-  const [cart, setCart] = React.useState<any>();
+  const [cart, setCart] = React.useState<any>([]);
   useEffect(() => {
     localStorage.setItem("@Cart", JSON.stringify(cart));
   }, [cart]);
@@ -52,11 +52,17 @@ const CartContext = ({ children }: any) => {
     };
     const NewCart = cart.filter((item: any) => item.id !== id);
     NewCart.pop(itens);
-    setCart(NewCart);
+    return setCart(NewCart);
   };
 
   return (
-    <cartProvider.Provider value={{ CartItem, cart, ClearCart }}>
+    <cartProvider.Provider
+      value={{
+        CartItem,
+        cart,
+        ClearCart,
+      }}
+    >
       {children}
     </cartProvider.Provider>
   );

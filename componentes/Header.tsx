@@ -13,8 +13,8 @@ const Header = () => {
   const cartContext = useCartProvider();
   const [active, setActive] = useState(false);
 
-  const handleClear = () => {
-    return null;
+  const handleClear = ({ titulo, price, img, id }: any) => {
+    cartContext.ClearCart({ titulo, price, img, id });
   };
 
   const Deslogamento = () => {
@@ -53,52 +53,55 @@ const Header = () => {
               </li>
             </Link>
             <li>
-              <span>{cartContext.cart.length}</span>
+              <div>
+                <Image
+                  src={CartIcon}
+                  alt="userIcon"
+                  className={styles.iconCart}
+                  onClick={() => {
+                    setActive(!active);
+                  }}
+                />
+                <span className={styles.span}>
+                  {cartContext.cart.length || ""}
+                </span>
+                <div
+                  className={styles.products}
+                  style={{ display: active ? "block" : "none" }}
+                >
+                  {cartContext.cart.length ? (
+                    <ul>
+                      {cartContext.cart.map((item) => {
+                        return (
+                          <li key={item.id}>
+                            <Image
+                              src={item.img}
+                              alt={item.titulo}
+                              width={100}
+                              height={100}
+                            />
+                            <h2>{item.titulo}</h2>
+                            <span>${item.price}</span>
 
-              <Image
-                src={CartIcon}
-                alt="userIcon"
-                className={styles.iconCart}
-                onClick={() => {
-                  setActive(!active);
-                }}
-              />
-              <div
-                className={styles.products}
-                style={{ display: active ? "block" : "none" }}
-              >
-                {cartContext.cart.length ? (
-                  <ul>
-                    {cartContext.cart.map((item) => {
-                      return (
-                        <li key={item.id}>
-                          <Image
-                            src={item.img}
-                            alt={item.titulo}
-                            width={100}
-                            height={100}
-                          />
-                          <h2>{item.titulo}</h2>
-                          <span>${item.price}</span>
-
-                          <div className={styles.btn}>
-                            <button>
-                              <Image
-                                src={ClearPng}
-                                alt=""
-                                width={40}
-                                height={40}
-                                onClick={handleClear}
-                              />
-                            </button>
-                          </div>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                ) : (
-                  <h2 className={styles.title}>Carrinho vazio...</h2>
-                )}
+                            <div className={styles.btn}>
+                              <button>
+                                <Image
+                                  src={ClearPng}
+                                  alt=""
+                                  width={40}
+                                  height={40}
+                                  onClick={handleClear}
+                                />
+                              </button>
+                            </div>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  ) : (
+                    <h2 className={styles.title}>Carrinho vazio...</h2>
+                  )}
+                </div>
               </div>
             </li>
           </ul>
