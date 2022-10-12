@@ -4,6 +4,7 @@ import axios from "axios";
 import { ProductsList } from "../../../types/listProdutos";
 import Image from "next/image";
 import styles from "../../../styles/ProductsList.module.css";
+import Link from "next/link";
 
 const CategoriaID = () => {
   const router = useRouter();
@@ -28,16 +29,18 @@ const CategoriaID = () => {
           <ul>
             {produtosList.map((item) => {
               return (
-                <li key={item.id}>
-                  <h1> {item.title}</h1>{" "}
-                  <Image
-                    src={item.images[0]}
-                    alt={item.title}
-                    width={450}
-                    height={450}
-                  />
-                  <span>${item.price}</span>
-                </li>
+                <Link href={`/products/${item.id}`} key={item.id}>
+                  <li>
+                    <h1> {item.title}</h1>{" "}
+                    <Image
+                      src={item.images[0]}
+                      alt={item.title}
+                      width={450}
+                      height={450}
+                    />
+                    <span>${item.price}</span>
+                  </li>
+                </Link>
               );
             })}
           </ul>
