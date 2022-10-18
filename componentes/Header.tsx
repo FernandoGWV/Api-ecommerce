@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Header.module.css";
 import Image from "next/image";
 import UserPng from "../Assets/user/user.svg";
+import Exit from "../Assets/user/exit.svg";
 import ClearPng from "../Assets/user/lixeira.svg";
 import CartIcon from "../Assets/user/cart.svg";
 import Link from "next/link";
@@ -11,10 +12,14 @@ import { useCartProvider } from "../Contexts/CartContext";
 const Header = () => {
   const authContext = useAuthContext();
   const cartContext = useCartProvider();
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(true);
 
-  const handleClear = ({ titulo, price, img, id }: any) => {
-    cartContext.ClearCart({ titulo, price, img, id });
+  const handleCart = (event: any) => {
+    setActive(!active);
+  };
+
+  const handleClear = (item: any) => {
+    cartContext.ClearCart(item.id);
   };
 
   const Deslogamento = () => {
@@ -41,32 +46,33 @@ const Header = () => {
 
         <div className={styles.login}>
           <ul>
-            <Link href={authContext.isLoged ? "/" : "/login"}>
-              <li className={styles.iconLogin}>
+            <li className={styles.iconLogin}>
+              <Link href={authContext.isLoged ? "/" : "/login"}>
                 <figure>
                   <Image src={UserPng} alt="userIcon" />
                 </figure>
-                <p>{authContext.dadosUsuario?.name}</p>
-                {authContext.isLoged && (
-                  <button onClick={Deslogamento}>SAIR</button>
-                )}
-              </li>
-            </Link>
+              </Link>
+              <p>{authContext.dadosUsuario?.name}</p>
+              {authContext.isLoged && (
+                <button className={styles.exit} onClick={Deslogamento}>
+                  <Image src={Exit} alt="exit" />
+                </button>
+              )}
+            </li>
+
             <li>
               <div>
                 <Image
                   src={CartIcon}
                   alt="userIcon"
-                  className={styles.iconCart}
-                  onClick={() => {
-                    setActive(!active);
-                  }}
+                  className={`${styles.iconCart}`}
+                  onClick={handleCart}
                 />
                 <span className={styles.span}>
                   {cartContext.cart.length || ""}
                 </span>
                 <div
-                  className={styles.products}
+                  className={`${styles.products} products`}
                   style={{ display: active ? "block" : "none" }}
                 >
                   {cartContext.cart.length ? (
@@ -90,7 +96,9 @@ const Header = () => {
                                   alt=""
                                   width={40}
                                   height={40}
-                                  onClick={handleClear}
+                                  onClick={() => {
+                                    handleClear({ ...item });
+                                  }}
                                 />
                               </button>
                             </div>

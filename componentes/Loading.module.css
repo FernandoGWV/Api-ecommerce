@@ -1,0 +1,21 @@
+.container {
+  display: grid;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.loading {
+  animation: is-rotating 1s infinite;
+  border: solid 6px #ccc;
+  border-top-color: aqua;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin: 10px;
+}
+
+@keyframes is-rotating {
+  to {
+    transform: rotate(1turn);
+  }
+}

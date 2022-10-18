@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useCartProvider } from "../Contexts/CartContext";
+import { useAuthContext } from "../Contexts/UserContext";
 
 import styles from "./Button.module.css";
 
@@ -12,11 +13,24 @@ type Props = {
 };
 
 const Button = ({ name, titulo, price, img, id }: Props) => {
+  const userContext = useAuthContext();
   const cartContext = useCartProvider();
-
   const handleCart = () => {
     cartContext.CartItem({ titulo, price, img, id });
   };
+  /* 
+  const handleUser = () => {
+    if (userContext.isLoged) {
+      localStorage.setItem(
+        "@CartUser",
+        JSON.stringify({ titulo, price, img, id })
+   
+      );
+           handleCart()
+    } else {
+      localStorage.setItem("@CartUser", "[]");
+    }
+  }; */
 
   return (
     <button className={styles.btn} onClick={handleCart}>

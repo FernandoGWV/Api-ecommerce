@@ -18,7 +18,9 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>categorias</h1>
         <Categoria />
         <h1 className={styles.title}>Produtos </h1>
-        <Produtos />
+        <div className={styles.mainContainer}>
+          <Produtos />
+        </div>
       </section>
     </>
   );

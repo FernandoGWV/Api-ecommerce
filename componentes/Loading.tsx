@@ -1,7 +1,13 @@
+import Image from "next/image";
 import React, { useState } from "react";
+import styles from "./Loading.module.css";
 
-const Loading = ({ loading, setLoading }: any) => {
-  return <div>Carregando arquivos....</div>;
+const Loading = () => {
+  return (
+    <div className={styles.container}>
+      <div className={styles.loading}></div>
+    </div>
+  );
 };
 
 export default Loading;

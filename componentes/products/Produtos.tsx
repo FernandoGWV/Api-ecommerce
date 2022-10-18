@@ -5,10 +5,11 @@ import Image from "next/image";
 import styles from "./Product.module.css";
 import Link from "next/link";
 import Loading from "../Loading";
+import Img from "../../help/Img";
 
 const Produtos = () => {
   const [produtosList, setProdutosList] = useState<Products[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     ProdutosList();
   }, []);
@@ -35,7 +36,7 @@ const Produtos = () => {
             <Link href={`/products/${item.id}`} key={item.id}>
               <li>
                 <figure>
-                  <Image
+                  <Img
                     src={item.images[0]}
                     alt={item.title}
                     width={1040}

@@ -5,6 +5,7 @@ import axios from "axios";
 import { Products } from "../../../types/products";
 import Button from "../../../componentes/Button";
 import styles from "../../../styles/Product.module.css";
+import Img from "../../../help/Img";
 
 const ProductSingle = () => {
   const router = useRouter();
@@ -26,10 +27,9 @@ const ProductSingle = () => {
   return (
     <section className={styles.mainContainer}>
       <figure>
-        <Image
-          className={styles.img}
+        <Img
           src={single?.images[0] || ""}
-          alt={single?.title}
+          alt={single?.title || ""}
           width={400}
           height={400}
         />
