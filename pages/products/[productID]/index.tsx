@@ -11,10 +11,20 @@ const ProductSingle = () => {
   const router = useRouter();
   const { productID } = router.query;
 
+  const [contar, setContar] = useState(0);
+
   const [single, setProductSingle] = useState<Products>();
   useEffect(() => {
     InitProduct();
   });
+
+  const moduleRemove = () => {
+    if (contar <= 0) {
+      setContar(contar);
+    } else {
+      setContar(contar - 1);
+    }
+  };
 
   const InitProduct = async () => {
     const res = await axios.get(
@@ -45,8 +55,25 @@ const ProductSingle = () => {
           titulo={single?.title ? single?.title : ""}
           price={single?.price ? single?.price.toString() : ""}
           img={single?.images[0] ? single?.images[0] : ""}
+          quantity={contar}
           name="comprar "
         />
+        <div className={styles.moduleBtn}>
+          <button
+            className={styles.btnAd}
+            onClick={() => {
+              setContar(contar + 1);
+            }}
+          >
+            ADICIONAR{" "}
+          </button>
+          <div className={styles.span}>
+            <span>{contar}</span>
+          </div>
+          <button className={styles.btnRe} onClick={moduleRemove}>
+            REMOVER
+          </button>
+        </div>
       </div>
     </section>
   );

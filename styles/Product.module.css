@@ -27,3 +27,38 @@
 .mainContainer span {
   font-weight: 600;
 }
+
+.mainContainer .moduleBtn {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-top: 20px;
+}
+
+.mainContainer .moduleBtn .btnAd {
+  background: darkgreen;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.mainContainer .moduleBtn .span {
+  width: 30px;
+  text-align: center;
+  background: #ccc;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.mainContainer .moduleBtn .btnRe {
+  background: red;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 20px;
+}

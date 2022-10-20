@@ -10,13 +10,14 @@ type Props = {
   price: string;
   img: string;
   id: string;
+  quantity: number;
 };
 
-const Button = ({ name, titulo, price, img, id }: Props) => {
+const Button = ({ name, titulo, price, img, id, quantity }: Props) => {
   const userContext = useAuthContext();
   const cartContext = useCartProvider();
   const handleCart = () => {
-    cartContext.CartItem({ titulo, price, img, id });
+    cartContext.CartItem({ titulo, price, img, id, quantity });
   };
   /* 
   const handleUser = () => {

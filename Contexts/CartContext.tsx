@@ -7,11 +7,12 @@ type PropCart = {
   price: string;
   img: string;
   id: string;
+  quantity: number;
 };
 
 type Props = {
   cart: PropCart[];
-  CartItem: ({ titulo, price, img, id }: PropCart) => void;
+  CartItem: ({ titulo, price, img, id, quantity }: PropCart) => void;
   ClearCart: (id: string | number) => void;
 };
 
@@ -35,12 +36,13 @@ const CartContext = ({ children }: any) => {
     }
   }, []);
 
-  const CartItem = ({ titulo, price, img, id }: PropCart) => {
+  const CartItem = ({ titulo, price, img, id, quantity }: PropCart) => {
     const itens = {
       id,
       titulo,
       price,
       img,
+      quantity,
     };
     const NewCart = cart.filter((item: any) => item.id !== id);
     NewCart.push(itens);

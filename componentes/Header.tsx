@@ -12,7 +12,7 @@ import { useCartProvider } from "../Contexts/CartContext";
 const Header = () => {
   const authContext = useAuthContext();
   const cartContext = useCartProvider();
-  const [active, setActive] = useState(true);
+  const [active, setActive] = useState(false);
 
   const handleCart = (event: any) => {
     setActive(!active);
