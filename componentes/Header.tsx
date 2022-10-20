@@ -87,7 +87,13 @@ const Header = () => {
                               height={100}
                             />
                             <h2>{item.titulo}</h2>
-                            <span>${item.price}</span>
+                            <span>{item.quantity}</span>
+                            <span>
+                              $
+                              {item.quantity > 1
+                                ? +item.price * item.quantity
+                                : item.price}
+                            </span>
 
                             <div className={styles.btn}>
                               <button>

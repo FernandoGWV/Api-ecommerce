@@ -11,9 +11,18 @@ type Props = {
   img: string;
   id: string;
   quantity: number;
+  disabled: boolean;
 };
 
-const Button = ({ name, titulo, price, img, id, quantity }: Props) => {
+const Button = ({
+  name,
+  titulo,
+  price,
+  img,
+  id,
+  quantity,
+  disabled,
+}: Props) => {
   const userContext = useAuthContext();
   const cartContext = useCartProvider();
   const handleCart = () => {
@@ -34,7 +43,7 @@ const Button = ({ name, titulo, price, img, id, quantity }: Props) => {
   }; */
 
   return (
-    <button className={styles.btn} onClick={handleCart}>
+    <button className={styles.btn} onClick={handleCart} disabled={disabled}>
       {name}
     </button>
   );

@@ -14,3 +14,8 @@
 .btn:hover {
   background-color: #ccc;
 }
+
+.btn:disabled {
+  background: #ccc;
+  cursor: default;
+}
