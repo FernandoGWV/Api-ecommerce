@@ -2,21 +2,26 @@ import React, { useState } from "react";
 import styles from "../../styles/Cadastro.module.css";
 import { useAuthContext } from "../../Contexts/UserContext";
 import { useRouter } from "next/router";
+import useForm from "../../services/useForm";
+import Input from "../../componentes/Form/Input";
 
 const CadastroPage = () => {
   const router = useRouter();
-  const [username, setUsername] = useState("");
+
+  const email: any = useForm("email");
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [avatar, setAvatar] = useState(
-    "https://i.pinimg.com/originals/56/a9/ad/56a9ad70fb92a77b8eed47ced71a495e.jpg"
-  );
+  const [username, setUsername] = useState("");
+  const [avatar, setAvatar] = useState("");
 
   const authContext = useAuthContext();
 
+  const moduleChange = ({ target }: any) => {
+    setAvatar(target.value);
+  };
+
   const handleCadastro = async (event: any) => {
     event.preventDefault();
-    authContext.cadastro(username, password, email, avatar);
+    authContext.cadastro(email.value, password, username, avatar);
   };
   if (authContext.isLoged) router.push("/");
   return (
@@ -26,26 +31,25 @@ const CadastroPage = () => {
         <form action="" onSubmit={handleCadastro}>
           {" "}
           <label htmlFor="email">email</label>
-          <input
-            type="text"
-            id="email"
-            value={username}
-            onChange={({ target }) => setUsername(target.value)}
-          />
+          <Input type="text" id="email" {...email} />
           <label htmlFor="password">Senha</label>
           <input
-            type="text"
+            type="password"
             id="password"
             value={password}
             onChange={({ target }) => setPassword(target.value)}
           />
           <label htmlFor="name">name</label>
-          <input
+          <Input
             type="text"
             id="name"
-            value={email}
-            onChange={({ target }) => setEmail(target.value)}
+            value={username}
+            onChange={({ target }: any) => {
+              setUsername(target.value);
+            }}
           />
+          <label>Url de Icon Perfil</label>
+          <input type="url" name="teste" onChange={moduleChange} />
           <button>cadastrar</button>
         </form>
       </div>

@@ -31,6 +31,7 @@ const AuthContext = ({ children }: any) => {
   const fetchData = async () => {
     const data = await api.get("/auth/profile");
     setDadosUsuario(data.data);
+    console.log(data);
   };
 
   useEffect(() => {

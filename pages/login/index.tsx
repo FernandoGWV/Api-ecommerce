@@ -2,6 +2,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import Input from "../../componentes/Form/Input";
 import { TOKEN_POST } from "../../Contexts/api";
 import { useAuthContext } from "../../Contexts/UserContext";
 import styles from "../../styles/Login.module.css";
@@ -24,26 +25,25 @@ const Login = () => {
     <section className={styles.mainContainer}>
       <div className={styles.login}>
         <h1>Login</h1>
-        <form action="" onSubmit={handleLogin}>
-          <label htmlFor="login">Login</label>
-          <input
-            type="text"
-            id="login"
-            value={username}
-            onChange={({ target }) => setUrsername(target.value)}
-          />
-          <p>{username}</p>
 
-          <label htmlFor="password">Senha</label>
-          <input
+        <form action="" onSubmit={handleLogin}>
+          <Input
+            name="Login"
             type="text"
+            id="name"
+            onChange={({ target }: any) => setUrsername(target.value)}
+          />
+
+          <Input
+            name="Senha"
+            type="password"
             id="password"
-            value={password}
-            onChange={({ target }) => setPassword(target.value)}
+            onChange={({ target }: any) => setPassword(target.value)}
           />
           <button>Logar</button>
         </form>
       </div>
+
       <div>
         <Link href="/cadastro">
           <a>Cadastra-se</a>
