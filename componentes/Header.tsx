@@ -21,6 +21,7 @@ const Header = () => {
   const handleClear = (item: any) => {
     cartContext.ClearCart(item.id);
   };
+  console.log(authContext.dadosUsuario?.avatar);
 
   const Deslogamento = () => {
     authContext.deslogar();
@@ -49,7 +50,11 @@ const Header = () => {
             <li className={styles.iconLogin}>
               <Link href={authContext.isLoged ? "/" : "/login"}>
                 <figure>
-                  <Image src={UserPng} alt="userIcon" />
+                  <Image
+                    className={styles.iconImg}
+                    src={UserPng}
+                    alt="userIcon"
+                  />
                 </figure>
               </Link>
               <p>{authContext.dadosUsuario?.name}</p>

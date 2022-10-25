@@ -10,6 +10,7 @@ const CadastroPage = () => {
 
   const email: any = useForm("email");
   const [password, setPassword] = useState("");
+
   const [username, setUsername] = useState("");
   const [avatar, setAvatar] = useState("");
 
@@ -33,11 +34,13 @@ const CadastroPage = () => {
           <label htmlFor="email">email</label>
           <Input type="text" id="email" {...email} />
           <label htmlFor="password">Senha</label>
-          <input
+          <Input
             type="password"
             id="password"
             value={password}
-            onChange={({ target }) => setPassword(target.value)}
+            onChange={({ target }: any) => {
+              setPassword(target.value);
+            }}
           />
           <label htmlFor="name">name</label>
           <Input

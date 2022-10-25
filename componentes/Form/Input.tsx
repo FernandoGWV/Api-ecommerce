@@ -13,15 +13,18 @@ const Input = ({
 }: any) => {
   return (
     <>
-      <label htmlFor={id}>{name}</label>
+      <label className={styles.label} htmlFor={id}>
+        {name}
+      </label>
       <input
+        className={styles.input}
         type={type}
         id={id}
         value={value}
         onBlur={onBlur}
         onChange={onChange}
       />
-      {error && <p>{error}</p>}
+      {error && <p className={styles.error}>{error}</p>}
     </>
   );
 };
