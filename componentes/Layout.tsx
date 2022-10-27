@@ -9,7 +9,7 @@ const Layout = ({ children }: Props) => {
     <section>
       <Header />
       <main className="container">{children}</main>
-      <footer className="container"> footer</footer>
+      <footer> Direitos reservados@ </footer>
     </section>
   );
 };

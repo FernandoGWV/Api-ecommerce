@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import Input from "../../componentes/Form/Input";
 import { TOKEN_POST } from "../../Contexts/api";
 import { useAuthContext } from "../../Contexts/UserContext";
+import useForm from "../../services/useForm";
 import styles from "../../styles/Login.module.css";
 
 const Login = () => {
@@ -28,10 +29,11 @@ const Login = () => {
 
         <form action="" onSubmit={handleLogin}>
           <Input
-            name="Login"
+            name="Email"
             type="text"
             id="name"
             onChange={({ target }: any) => setUrsername(target.value)}
+            placeholder="email"
           />
 
           <Input
@@ -42,15 +44,11 @@ const Login = () => {
           />
           <button>Logar</button>
         </form>
-      </div>
+        <div>
+          <Link href="/cadastro">Cadastra-se</Link>
 
-      <div>
-        <Link href="/cadastro">
-          <a>Cadastra-se</a>
-        </Link>
-        <Link href="/recuperar">
-          <a>Esqueceu a senha?</a>
-        </Link>
+          <Link href="/recuperar">Esqueceu a senha?</Link>
+        </div>
       </div>
     </section>
   );

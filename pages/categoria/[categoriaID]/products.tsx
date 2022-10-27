@@ -16,6 +16,7 @@ const CategoriaID = () => {
   useEffect(() => {
     produtos();
   });
+
   const produtos = async () => {
     try {
       const res = await axios.get(
@@ -27,6 +28,7 @@ const CategoriaID = () => {
       console.log(err);
     }
   };
+  const url = "api.lorem.space";
 
   if (loading) return <Loading />;
   return (
@@ -40,7 +42,7 @@ const CategoriaID = () => {
                   <li>
                     <h1> {item.title}</h1>{" "}
                     <Img
-                      src={item.images[0]}
+                      src={item.images[0].includes(url) ? item.images[0] : ""}
                       alt={item.title}
                       width={450}
                       height={450}

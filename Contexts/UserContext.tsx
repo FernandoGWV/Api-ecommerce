@@ -9,7 +9,7 @@ type IUser = {
   email: string;
   password: string;
   name: string;
-  role: string;
+  avatar: string;
 };
 
 interface IAuthContext {

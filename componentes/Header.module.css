@@ -134,3 +134,7 @@
 .mainContainer .products .title {
   margin: 30%;
 }
+
+.mainContainer .iconImg {
+  border-radius: 50%;
+}
