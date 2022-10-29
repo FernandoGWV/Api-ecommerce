@@ -6,7 +6,7 @@ import { Products } from "../../../types/products";
 import Button from "../../../componentes/Button";
 import styles from "../../../styles/Product.module.css";
 import Img from "../../../help/Img";
-import Loading from "../../../componentes/Loading";
+import Loading from "../../../help/Loading";
 
 const ProductSingle = () => {
   const router = useRouter();
@@ -14,12 +14,10 @@ const ProductSingle = () => {
   const [contar, setContar] = useState(+"") as any;
   const [single, setProductSingle] = useState<Products>();
   const [img, setImg] = useState(0);
-  const ids = ["1", "2", "3"];
+
   const [loading, setLoading] = useState(false);
-  const moduleImage = (event: any) => {
-    setLoading(true);
+  const moduleImage = async (event: any) => {
     setImg(+event.target.alt);
-    setLoading(false);
   };
 
   useEffect(() => {
@@ -49,14 +47,12 @@ const ProductSingle = () => {
     <section className={styles.mainContainer}>
       <div>
         <figure>
-          {<Loading /> && (
-            <Img
-              src={single?.images[img] || ""}
-              alt={single?.title || ""}
-              width={400}
-              height={400}
-            />
-          )}
+          <Img
+            src={single?.images[img] || ""}
+            alt={single?.title || ""}
+            width={400}
+            height={400}
+          />
         </figure>
 
         <ul className={styles.listImgs}>

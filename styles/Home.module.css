@@ -1,3 +1,8 @@
+.mainContainer {
+  overflow-y: auto;
+  height: 520px;
+}
+
 .title {
   margin-top: 20px;
   font-size: 1.3rem;
