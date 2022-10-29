@@ -6,7 +6,7 @@ import Image from "next/image";
 import styles from "../../../styles/ProductsList.module.css";
 import Link from "next/link";
 import Img from "../../../help/Img";
-import Loading from "../../../componentes/Loading";
+import Loading from "../../../help/Loading";
 
 const CategoriaID = () => {
   const router = useRouter();

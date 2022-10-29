@@ -4,7 +4,7 @@ import { Products } from "../../types/products";
 import Image from "next/image";
 import styles from "./Product.module.css";
 import Link from "next/link";
-import Loading from "../Loading";
+import Loading from "../../help/Loading";
 import Img from "../../help/Img";
 
 const Produtos = () => {

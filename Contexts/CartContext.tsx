@@ -28,8 +28,9 @@ const CartContext = ({ children }: any) => {
   const [cart, setCart] = React.useState<any>([]);
 
   useEffect(() => {
-    localStorage.setItem("@Cart", JSON.stringify(cart));
+    if (cart.length > 0) localStorage.setItem("@Cart", JSON.stringify(cart));
   }, [cart]);
+
   useEffect(() => {
     if (localStorage) {
       setCart(JSON.parse(localStorage.getItem("@Cart") || "[]"));
@@ -53,6 +54,7 @@ const CartContext = ({ children }: any) => {
   const ClearCart = (id: string | number): any => {
     const NewCart = cart.filter((item: any) => item.id !== id);
     setCart(NewCart);
+    localStorage.setItem("@Cart", JSON.stringify(NewCart));
   };
 
   return (
