@@ -14,7 +14,7 @@ const CategoriaID = () => {
   const { categoriaID } = router.query;
   const [produtosList, setProdutosList] = useState<ProductsList[]>([]);
   const [loading, setLoading] = useState(false);
-  const resize = useMedia("max-width: 1220px");
+  const resize = useMedia("(max-width: 1060px)");
   useEffect(() => {
     produtos();
   });
@@ -43,7 +43,7 @@ const CategoriaID = () => {
                 <Link href={`/products/${item.id}`} key={item.id}>
                   <li>
                     <h1> {item.title}</h1>{" "}
-                    <Image
+                    <Img
                       src={item.images[0].includes(url) ? item.images[0] : ""}
                       alt={item.title}
                       width={resize ? 500 : 450}
