@@ -1,6 +1,7 @@
 .mainContainer {
   margin-top: 50px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 }
 
@@ -82,4 +83,21 @@
 .mainContainer .listImgs li img {
   border-radius: 10px;
   cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .mainContainer p {
+    width: 300px;
+  }
+
+  .mainContainer figure {
+    width: 200px;
+  }
 }

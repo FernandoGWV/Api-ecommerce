@@ -8,11 +8,14 @@ import CartIcon from "../Assets/user/cart.svg";
 import Link from "next/link";
 import { useAuthContext } from "../Contexts/UserContext";
 import { useCartProvider } from "../Contexts/CartContext";
+import useMedia from "../services/useMedia";
 
 const Header = () => {
   const authContext = useAuthContext();
   const cartContext = useCartProvider();
   const [active, setActive] = useState(false);
+
+  const resize = useMedia("(max-width: 600px)");
 
   const handleCart = (event: any) => {
     setActive(!active);
@@ -85,12 +88,14 @@ const Header = () => {
                       {cartContext.cart.map((item) => {
                         return (
                           <li key={item.id}>
-                            <Image
-                              src={item.img}
-                              alt={item.titulo}
-                              width={100}
-                              height={100}
-                            />
+                            {resize ? null : (
+                              <Image
+                                src={item.img}
+                                alt={item.titulo}
+                                width={100}
+                                height={100}
+                              />
+                            )}
                             <h2>{item.titulo}</h2>
                             <span>{item.quantity}</span>
                             <span>

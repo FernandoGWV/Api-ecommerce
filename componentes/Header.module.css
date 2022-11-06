@@ -150,3 +150,23 @@
     font-size: 0.895rem;
   }
 }
+
+@media (max-width: 1200px) {
+  .mainContainer .products {
+    margin: 0 auto;
+    top: 20%;
+    left: 20%;
+    width: 50%;
+    height: 500px;
+  }
+}
+
+@media (max-width: 600px) {
+  .mainContainer .products {
+    margin: 0 auto;
+    top: 20%;
+    left: 20%;
+    width: 70%;
+    height: 400px;
+  }
+}
