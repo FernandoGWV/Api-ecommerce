@@ -44,10 +44,10 @@ const CategoriaID = () => {
                   <li>
                     <h1> {item.title}</h1>{" "}
                     <Img
-                      src={item.images[0].includes(url) ? item.images[0] : ""}
+                      src={item.images[0]?.includes(url) ? item.images[0] : ""}
                       alt={item.title}
-                      width={resize ? 500 : 450}
-                      height={450}
+                      width={resize ? 350 : 500}
+                      height={resize ? 350 : 500}
                     />
                     <span>${item.price}</span>
                   </li>

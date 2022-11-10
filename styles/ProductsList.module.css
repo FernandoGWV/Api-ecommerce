@@ -12,6 +12,12 @@
   }
 }
 
+@media (max-width: 500px) {
+  .mainContainer ul {
+    grid-template-columns: 300px;
+  }
+}
+
 .mainContainer ul li {
   cursor: pointer;
 }

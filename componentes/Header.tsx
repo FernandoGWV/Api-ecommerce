@@ -16,6 +16,7 @@ const Header = () => {
   const [active, setActive] = useState(false);
 
   const resize = useMedia("(max-width: 600px)");
+  const resizeTwo = useMedia("(max-width: 480px)");
 
   const handleCart = (event: any) => {
     setActive(!active);
@@ -39,11 +40,15 @@ const Header = () => {
 
           <nav>
             <div>
-              <ul>
-                <li>categories</li>
-                <li>about</li>
-                <li>help</li>
-              </ul>
+              {resizeTwo ? (
+                ""
+              ) : (
+                <ul>
+                  <li>categories</li>
+                  <li>about</li>
+                  <li>help</li>
+                </ul>
+              )}
             </div>
           </nav>
         </div>

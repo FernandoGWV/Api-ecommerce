@@ -6,10 +6,12 @@ import styles from "./Product.module.css";
 import Link from "next/link";
 import Loading from "../../help/Loading";
 import Img from "../../help/Img";
+import useMedia from "../../services/useMedia";
 
 const Produtos = () => {
   const [produtosList, setProdutosList] = useState<Products[]>([]);
   const [loading, setLoading] = useState(true);
+  const resize = useMedia("(max-width: 690px)");
   useEffect(() => {
     ProdutosList();
   }, []);
