@@ -20,8 +20,15 @@ const Header = () => {
 
   const handleCart = (event: any) => {
     setActive(!active);
+    outside();
   };
-
+  const outside = () => {
+    const html = document.documentElement;
+    html.addEventListener("click", subSide);
+    function subSide(event: any) {
+      console.log(event.target);
+    }
+  };
   const handleClear = (item: any) => {
     cartContext.ClearCart(item.id);
   };
