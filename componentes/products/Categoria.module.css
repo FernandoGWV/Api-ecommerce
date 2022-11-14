@@ -22,3 +22,19 @@
   flex-grow: 1;
   text-align: center;
 }
+
+@media (max-width: 1280px) {
+  .mainContainer ul {
+    display: grid;
+    grid-template-columns: 1fr 200px 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .mainContainer ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}

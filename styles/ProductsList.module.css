@@ -6,6 +6,17 @@
   height: 800px;
   align-items: center;
 }
+@media (max-width: 1000px) {
+  .mainContainer ul {
+    grid-template-columns: 300px 300px;
+  }
+}
+
+@media (max-width: 500px) {
+  .mainContainer ul {
+    grid-template-columns: 300px;
+  }
+}
 
 .mainContainer ul li {
   cursor: pointer;

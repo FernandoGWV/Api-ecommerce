@@ -7,12 +7,14 @@ import styles from "../../../styles/ProductsList.module.css";
 import Link from "next/link";
 import Img from "../../../help/Img";
 import Loading from "../../../help/Loading";
+import useMedia from "../../../services/useMedia";
 
 const CategoriaID = () => {
   const router = useRouter();
   const { categoriaID } = router.query;
   const [produtosList, setProdutosList] = useState<ProductsList[]>([]);
   const [loading, setLoading] = useState(false);
+  const resize = useMedia("(max-width: 1060px)");
   useEffect(() => {
     produtos();
   });
@@ -42,10 +44,10 @@ const CategoriaID = () => {
                   <li>
                     <h1> {item.title}</h1>{" "}
                     <Img
-                      src={item.images[0].includes(url) ? item.images[0] : ""}
+                      src={item.images[0]?.includes(url) ? item.images[0] : ""}
                       alt={item.title}
-                      width={450}
-                      height={450}
+                      width={resize ? 350 : 500}
+                      height={resize ? 350 : 500}
                     />
                     <span>${item.price}</span>
                   </li>

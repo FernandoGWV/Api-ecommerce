@@ -7,6 +7,7 @@ import Button from "../../../componentes/Button";
 import styles from "../../../styles/Product.module.css";
 import Img from "../../../help/Img";
 import Loading from "../../../help/Loading";
+import useMedia from "../../../services/useMedia";
 
 const ProductSingle = () => {
   const router = useRouter();
@@ -14,6 +15,8 @@ const ProductSingle = () => {
   const [contar, setContar] = useState(+"") as any;
   const [single, setProductSingle] = useState<Products>();
   const [img, setImg] = useState(0);
+
+  const resize = useMedia("(max-width:800px)");
 
   const [loading, setLoading] = useState(false);
   const moduleImage = async (event: any) => {
@@ -54,16 +57,24 @@ const ProductSingle = () => {
             height={400}
           />
         </figure>
-
-        <ul className={styles.listImgs}>
-          {single?.images.map((img, i) => {
-            return (
-              <li key={i} onClick={moduleImage}>
-                <Image src={img} alt={i.toString()} width={100} height={100} />
-              </li>
-            );
-          })}
-        </ul>
+        {resize ? (
+          ""
+        ) : (
+          <ul className={styles.listImgs}>
+            {single?.images.map((img, i) => {
+              return (
+                <li key={i} onClick={moduleImage}>
+                  <Image
+                    src={img}
+                    alt={i.toString()}
+                    width={100}
+                    height={100}
+                  />
+                </li>
+              );
+            })}
+          </ul>
+        )}
       </div>
 
       <div>

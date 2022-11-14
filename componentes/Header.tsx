@@ -8,16 +8,27 @@ import CartIcon from "../Assets/user/cart.svg";
 import Link from "next/link";
 import { useAuthContext } from "../Contexts/UserContext";
 import { useCartProvider } from "../Contexts/CartContext";
+import useMedia from "../services/useMedia";
 
 const Header = () => {
   const authContext = useAuthContext();
   const cartContext = useCartProvider();
   const [active, setActive] = useState(false);
 
+  const resize = useMedia("(max-width: 600px)");
+  const resizeTwo = useMedia("(max-width: 480px)");
+
   const handleCart = (event: any) => {
     setActive(!active);
+    outside();
   };
-
+  const outside = () => {
+    const html = document.documentElement;
+    html.addEventListener("click", subSide);
+    function subSide(event: any) {
+      console.log(event.target);
+    }
+  };
   const handleClear = (item: any) => {
     cartContext.ClearCart(item.id);
   };
@@ -36,11 +47,15 @@ const Header = () => {
 
           <nav>
             <div>
-              <ul>
-                <li>categories</li>
-                <li>about</li>
-                <li>help</li>
-              </ul>
+              {resizeTwo ? (
+                ""
+              ) : (
+                <ul>
+                  <li>categories</li>
+                  <li>about</li>
+                  <li>help</li>
+                </ul>
+              )}
             </div>
           </nav>
         </div>
@@ -85,12 +100,14 @@ const Header = () => {
                       {cartContext.cart.map((item) => {
                         return (
                           <li key={item.id}>
-                            <Image
-                              src={item.img}
-                              alt={item.titulo}
-                              width={100}
-                              height={100}
-                            />
+                            {resize ? null : (
+                              <Image
+                                src={item.img}
+                                alt={item.titulo}
+                                width={100}
+                                height={100}
+                              />
+                            )}
                             <h2>{item.titulo}</h2>
                             <span>{item.quantity}</span>
                             <span>
@@ -105,8 +122,8 @@ const Header = () => {
                                 <Image
                                   src={ClearPng}
                                   alt=""
-                                  width={40}
-                                  height={40}
+                                  width={50}
+                                  height={50}
                                   onClick={() => {
                                     handleClear({ ...item });
                                   }}

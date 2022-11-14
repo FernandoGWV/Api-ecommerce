@@ -53,3 +53,28 @@
   padding: 2px;
   font-weight: bold;
 }
+
+@media (max-width: 1060px) {
+  .listProduct ul {
+    display: grid;
+    grid-template-columns: 300px 300px;
+    gap: 50px;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+    padding: 0;
+  }
+}
+
+@media (max-width: 690px) {
+  .listProduct ul {
+    display: grid;
+    grid-template-columns: 300px;
+    gap: 50px;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 80px;
+    padding: 0;
+  }
+}

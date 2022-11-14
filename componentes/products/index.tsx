@@ -4,10 +4,13 @@ import axios from "axios";
 import Image from "next/image";
 import styles from "./Categoria.module.css";
 import Link from "next/link";
+import useMedia from "../../services/useMedia";
 
 const Categoria = () => {
   const [produtosList, setProdutosList] = useState<ProductCategory[]>([]);
   const [loading, setloading] = useState(false);
+
+  const resize = useMedia("(max-width: 500px)");
 
   useEffect(() => {
     Produtos();
@@ -50,8 +53,8 @@ const Categoria = () => {
                     <Image
                       src={item.image}
                       alt={item.name}
-                      width={180}
-                      height={130}
+                      width={resize ? 130 : 180}
+                      height={resize ? 100 : 130}
                     />
                   </Link>
                 </figure>
