@@ -169,4 +169,11 @@
     width: 90%;
     height: 400px;
   }
+
+  .mainContainer .span {
+    position: absolute;
+    left: 310px;
+    top: 5px;
+    width: 20px;
+  }
 }
